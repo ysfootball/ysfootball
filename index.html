@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PES 2017 PATCH 2026 AIO - Diskon Spesial</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        /* --- Desain Card dan Layout Dasar --- */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .product-card {
+            width: 100%;
+            max-width: 480px; 
+            background-color: white;
+            border-radius: 12px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); 
+            text-align: left;
+        }
+
+        .product-image-container {
+            width: 100%;
+            padding: 0;
+            background-color: #eee;
+        }
+
+        .product-image {
+            width: 100%; 
+            display: block; 
+            transition: transform 0.3s ease;
+        }
+
+        .product-content {
+            padding: 25px; 
+        }
+
+        /* --- Style Label Versi (Diletakkan di atas H1) --- */
+        .version-label {
+            display: inline-block;
+            font-size: 0.9em;
+            font-weight: 600;
+            color: #444; 
+            background-color: #f0f0f0; 
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 5px; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* --- Style Judul (H1) --- */
+        .product-content h1 {
+            font-size: 1.6em; 
+            color: #1a237e; 
+            margin: 0 0 5px 0; /* Kurangi margin bawah H1 */
+            line-height: 1.3;
+        }
+
+        /* Style untuk info Download/Install yang baru */
+        .size-info {
+            font-weight: 500; 
+            color: #555;
+            font-size: 0.95em;
+            margin-bottom: 15px; /* Tambahkan margin bawah untuk pemisah */
+        }
+        
+        /* --- Harga (Bertumpuk/Stacked) --- */
+        .price-group {
+            margin: 15px 0 30px 0;
+            padding: 10px 0;
+            border-top: 1px solid #f5f5f5;
+            border-bottom: 1px solid #f5f5f5;
+        }
+
+        .strikethrough-price {
+            color: #999;
+            font-size: 1.1em;
+            text-decoration: line-through;
+            margin-bottom: 5px; 
+            display: block; 
+        }
+
+        .price {
+            font-size: 2.5em; 
+            color: #E74C3C; 
+            font-weight: 800;
+            display: block; 
+        }
+        
+        /* --- Gaya Tombol Tumpuk Vertikal (Tombol Utama) --- */
+        .action-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%; 
+            padding: 16px 0; 
+            text-decoration: none;
+            border-radius: 8px; 
+            font-size: 1.15em; 
+            font-weight: 700;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-bottom: 12px; 
+        }
+        
+        .action-button:active {
+            transform: translateY(1px); 
+            box-shadow: none !important;
+        }
+        
+        .action-button i {
+            margin-right: 10px;
+            font-size: 1.4em;
+        }
+
+        /* Gaya Tombol WA */
+        .whatsapp-button {
+            background-color: #25D366; 
+            color: white;
+            box-shadow: 0 5px 10px rgba(37, 211, 102, 0.4);
+        }
+        .whatsapp-button:hover {
+            background-color: #128C7E;
+            box-shadow: 0 3px 6px rgba(37, 211, 102, 0.4);
+        }
+        
+        /* Gaya Tombol Shopee */
+        .shopee-button {
+            background-color: #EE4D2D; 
+            color: white;
+            box-shadow: 0 5px 10px rgba(238, 77, 45, 0.4);
+        }
+        .shopee-button:hover {
+            background-color: #D34020;
+            box-shadow: 0 3px 6px rgba(238, 77, 45, 0.4);
+        }
+        
+        /* Gaya Tombol TikTok Shop */
+        .tiktok-button {
+            background-color: #000000; 
+            color: white;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+        .tiktok-button:hover {
+            background-color: #222222;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* --- Gaya Deskripsi --- */
+        .description-box {
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px; 
+            background-color: #fafafa;
+        }
+        
+        .description-box h3 {
+            color: #1a237e;
+            margin-top: 0;
+            border-bottom: 2px solid #1a237e;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .all-in-one {
+            display: block;
+            background-color: #e3f2fd; 
+            color: #0d47a1;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+            border: 1px solid #bbdefb;
+        }
+        
+        .description-box ul {
+            padding-left: 20px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            list-style-type: disc; 
+        }
+        
+        .description-box li {
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .description-box .specs-list {
+            list-style-type: none;
+            padding-left: 0;
+            margin-bottom: 15px; /* Tambahkan margin bawah agar tombol tidak terlalu mepet */
+        }
+        
+        .description-box .specs-list li {
+            background-color: #fff;
+            padding: 8px 12px;
+            margin-bottom: 6px;
+            border-radius: 4px;
+            border-left: 4px solid #1a237e;
+            font-size: 0.95em;
+        }
+        
+        /* Gaya Tombol Download Kecil (Biru Muda) */
+        .small-download-button {
+            display: inline-flex; /* Agar hanya selebar konten */
+            align-items: center;
+            padding: 10px 15px; 
+            text-decoration: none;
+            border-radius: 6px; 
+            font-size: 0.9em; /* Ukuran lebih kecil */
+            font-weight: 600;
+            background-color: #3498DB; 
+            color: white;
+            box-shadow: 0 3px 6px rgba(52, 152, 219, 0.3);
+            transition: background-color 0.2s;
+            margin-top: 10px;
+        }
+        .small-download-button:hover {
+            background-color: #2980B9;
+        }
+        .small-download-button i {
+            margin-right: 8px;
+            font-size: 1.1em;
+        }
+
+        /* Gaya untuk teks "Powered by YS FOOTBALL" */
+        .powered-by {
+            font-size: 0.9em; 
+            color: #757575;
+            margin-top: 15px;
+            text-align: center;
+            font-weight: 500; 
+        }
+    </style>
+</head>
+<body>
+
+    <div class="product-card">
+        
+        <div class="product-image-container">
+            <img 
+                src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhXkZLn5yjncO4DLd_u6mRcMT4xJtZn31HbiIzbrG9GTi5-UpIf2IAKmcEM7KHrlUMB1azYVHOKKhksaNDPlBXodhanlyadKMcuYtijgBTp0OB-5lTdIK2bA0UYKKjs509ElK0HFhuHbNCdCXyNgEL6U96IrMPiHwrfEHkzr1KtwDub0Hqi-pnSocaWSbI/s1024/WhatsApp%20Image%202025-11-25%20at%2022.33.52_42a5fa17.jpg" 
+                alt="Gambar PES 2017 Patch 2026 AIO" 
+                class="product-image"
+            >
+        </div>
+
+        <div class="product-content">
+            
+            <span class="version-label">Versi Link</span>
+
+            <h1>PES 2017 PATCH 2026 AIO</h1>
+            
+            <p class="size-info">Download: <strong>25 GB</strong> | Install: <strong>47 GB</strong></p> 
+
+            <div class="price-group">
+                <del class="strikethrough-price">Rp 150.000</del>
+                <span class="price">Rp 50.000</span>
+            </div>
+            
+            <div class="description-box">
+                
+                <hr style="border: 0; border-top: 1px dashed #ddd; margin: 0 0 15px 0;"> 
+                
+                <h3><i class="fas fa-desktop"></i> MINIMUM SPESIFIKASI PC/LAPTOP:</h3>
+                <ul class="specs-list">
+                    <li><strong>OS:</strong> Windows 7 SP1 / 8.1 / 10 / 11 (64-bit)</li>
+                    <li><strong>CPU:</strong> Intel Core i3 / AMD Phenom II X4 (1.8GHZ)</li>
+                    <li><strong>GPU:</strong> NVD GT630 / AMD HD6570 (VRAM 128MB)</li>
+					<li><strong>RAM:</strong> 4 GB - 8 GB</li>
+					<li><strong>DIRECTX:</strong> VERSION 9.0</li>
+                </ul>
+                
+                <a 
+                    href="https://www.mediafire.com/file/sy55vb6nfl1fsb3/CekSettingPES.rar/file" 
+                    class="small-download-button" 
+                    target="_blank"
+                >
+                    <i class="fas fa-search"></i> 
+                    CEK SPEK PC/LAPTOP
+                </a>
+            </div>
+
+            <div>
+                
+                <a 
+                    href="https://wa.me/6289626395405?text=Halo%20Kak%2C%20Mau%20Order%20pes%202017%20patch%202026." 
+                    class="action-button whatsapp-button" 
+                    target="_blank"
+                >
+                    <i class="fab fa-whatsapp"></i> 
+                    Pesan Langsung via WhatsApp
+                </a>
+                
+                <a 
+                    href="https://s.shopee.co.id/5q0mKlDSR9" 
+                    class="action-button shopee-button" 
+                    target="_blank"
+                >
+                    <i class="fas fa-shopping-cart"></i> 
+                    Beli Versi Flashdisk di Shopee
+                </a>
+                
+                <a 
+                    href="https://vt.tokopedia.com/t/ZSHT4dWvKW1y9-xoiNH/" 
+                    class="action-button tiktok-button" 
+                    target="_blank"
+                >
+                    <i class="fas fa-store"></i> 
+                    Beli Versi Flashdisk di TikTok Shop
+                </a>
+            </div>
+            
+            <p class="powered-by">
+                Powered by YS FOOTBALL
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
